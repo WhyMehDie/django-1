@@ -6,9 +6,9 @@ echo ========================================
 echo.
 echo Opening backend and frontend servers...
 echo.
-start "MOVEZ Backend" cmd /k cd "c:\Users\abden\Downloads\MOVEZ v3\backend" ^&^& C:\Users\abden\AppData\Local\Programs\Python\Python311\python.exe manage.py runserver
+start "MOVEZ Backend" cmd /k cd "%~dp0backend" ^&^& python manage.py runserver
 timeout /t 2
-start "MOVEZ Frontend" cmd /k cd "c:\Users\abden\Downloads\MOVEZ v3\frontend" ^&^& npm run dev
+start "MOVEZ Frontend" cmd /k cd "%~dp0frontend" ^&^& npm run dev
 timeout /t 5
 echo.
 echo ========================================
