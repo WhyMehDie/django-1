@@ -2,6 +2,8 @@
 Django settings for sport_app project.
 """
 
+import os
+import dj_database_url
 from pathlib import Path
 from decouple import config
 from datetime import timedelta
@@ -45,6 +47,7 @@ STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET', default='whsec_dummy')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,9 +84,16 @@ CHANNEL_LAYERS = {
     },
 }
 
-# Database — SQLite (local dev) / MySQL (production)
-# To use MySQL, set USE_MYSQL=True in .env and configure DB_* variables
-if config('USE_MYSQL', default=False, cast=bool):
+# Database Configuration
+if config('DATABASE_URL', default=''):
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL'),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+elif config('USE_MYSQL', default=False, cast=bool):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -125,6 +135,9 @@ USE_TZ = True
 
 # Static & Media files
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
