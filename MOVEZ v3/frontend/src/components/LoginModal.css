@@ -1,0 +1,201 @@
+/* ═══════════════════════════════════
+   LOGIN MODAL
+═══════════════════════════════════ */
+.lmodal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 0, 30, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: backdropIn 0.2s ease;
+}
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lmodal-card {
+  position: relative;
+  background: rgba(50, 0, 130, 0.92);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 24px;
+  padding: 44px 40px 36px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow:
+    0 24px 80px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  animation: cardIn 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: scale(0.93) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.lmodal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: rgba(255,255,255,0.6);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lmodal-close:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.lmodal-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.lmodal-logo-img {
+  height: 72px;
+  width: 72px;
+  display: block;
+  background: linear-gradient(135deg, #a78bfa, #a3e635);
+  -webkit-mask-image: url('/logo_transparent.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url('/logo_transparent.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  animation: logoShine 3s infinite ease-in-out;
+}
+
+.lmodal-title {
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.lmodal-message {
+  font-size: 13px;
+  color: rgba(163,230,53,0.9);
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  background: rgba(163,230,53,0.1);
+  border: 1px solid rgba(163,230,53,0.2);
+  border-radius: 8px;
+}
+
+.lmodal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.lmodal-submit {
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  margin-top: 4px;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.5);
+}
+.lmodal-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(124,58,237,0.7);
+}
+.lmodal-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.lmodal-register {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+}
+.lmodal-link {
+  background: none;
+  border: none;
+  color: #a78bfa;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* Test accounts */
+.lmodal-test-accounts {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 18px;
+}
+.lmodal-test-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.lmodal-test-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+.lmodal-test-pill {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--pill, rgba(255,255,255,0.12));
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all 0.2s;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+.lmodal-test-pill:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-1px);
+}
+.lmodal-pill-role {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pill, rgba(255,255,255,0.8));
+}
+.lmodal-pill-email {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  font-family: monospace;
+}
+
+@media (max-width: 500px) {
+  .lmodal-test-grid {
+    grid-template-columns: 1fr;
+  }
+}

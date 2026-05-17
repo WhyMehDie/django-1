@@ -1,0 +1,218 @@
+/* ══════════════════════════════
+   NAVBAR — fixed floating bar
+══════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96%;
+  max-width: 1400px;
+  z-index: 1000;
+  padding: 10px 20px;
+  border-radius: 18px;
+  background: rgba(45, 0, 120, 0.7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  /* Navbar total height ≈ 64px + 14px top = 78px clearance needed */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+/* ── BRAND — no box, just logo + text ── */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* Logo image — purple/green gradient via mask */
+.nav-logo-img {
+  height: 48px;
+  width: 48px;
+  display: block;
+  background: linear-gradient(135deg, #a78bfa, #a3e635);
+  -webkit-mask-image: url('/logo_transparent.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url('/logo_transparent.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+/* MOVEZ text — MOV white, EZ gradient */
+.nav-brand-name {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1;
+  font-family: 'Inter', sans-serif;
+}
+.nav-brand-mov {
+  color: #fff;
+}
+.nav-brand-ez {
+  background: linear-gradient(135deg, #a78bfa, #a3e635);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── NAV LINKS ── */
+.navbar-links {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.07);
+}
+
+.nav-item.active {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(91,33,182,0.3));
+  box-shadow: inset 0 0 0 1px rgba(167,139,250,0.25);
+}
+
+/* ── USER CHIP ── */
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px 5px 5px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.user-chip:hover {
+  background: rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.user-role {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dropdown-icon {
+  color: rgba(255,255,255,0.4);
+  margin-left: 2px;
+}
+
+.btn-icon {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.btn-icon:hover {
+  color: #f87171;
+  background: rgba(239,68,68,0.1);
+  border-color: rgba(239,68,68,0.25);
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 900px) {
+  .nav-label {
+    display: none;
+  }
+  .navbar-links {
+    gap: 8px;
+  }
+  .nav-item {
+    padding: 8px;
+    justify-content: center;
+  }
+  .user-name, .user-role {
+    display: none;
+  }
+  .user-chip {
+    padding: 5px;
+  }
+  .dropdown-icon {
+    display: none;
+  }
+  .nav-brand-name {
+    display: none;
+  }
+  .navbar-container {
+    gap: 8px;
+  }
+}
