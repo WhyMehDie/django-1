@@ -1,0 +1,54 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Django Backend",
+			"type": "shell",
+			"command": "c:\\Users\\abden\\Downloads\\MOVEZ\\backend\\venv\\Scripts\\python.exe",
+			"args": [
+				"manage.py",
+				"runserver"
+			],
+			"isBackground": true
+		},
+		{
+			"label": "NPM Build",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build"
+			]
+		},
+		{
+			"label": "Lancer Backend (Django)",
+			"type": "shell",
+			"command": "cd backend && .\\venv\\Scripts\\python.exe manage.py runserver",
+			"isBackground": true
+		},
+		{
+			"label": "Lancer Frontend (React)",
+			"type": "shell",
+			"command": "cd frontend && npm run dev",
+			"isBackground": true
+		},
+		{
+			"label": "Lancer Django",
+			"type": "shell",
+			"command": "cd backend && .\\venv\\Scripts\\python.exe manage.py runserver",
+			"isBackground": true
+		},
+		{
+			"label": "Check Users DB",
+			"type": "shell",
+			"command": "cd backend && .\\venv\\Scripts\\python.exe check_users.py",
+			"isBackground": false
+		},
+		{
+			"label": "Write User Log",
+			"type": "shell",
+			"command": "cd backend && .\\venv\\Scripts\\python.exe check_users.py",
+			"isBackground": false
+		}
+	]
+}
